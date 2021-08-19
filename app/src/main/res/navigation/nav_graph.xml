@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.gigaweb.mytrucks.fragments.MainFragment"
+        android:label="Dashboard"
+        tools:layout="@layout/fragment_main">
+        <action
+            android:id="@+id/action_mainFragment_to_generateReportFragment"
+            app:destination="@id/generateReportFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_generateStatementFragment"
+            app:destination="@id/generateStatementFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_addIncomeFragment"
+            app:destination="@id/addIncomeFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_addExpenseFragment"
+            app:destination="@id/addExpenseFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_truckTransactionsFragment"
+            app:destination="@id/truckTransactionsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/generateReportFragment"
+        android:name="com.gigaweb.mytrucks.fragments.GenerateReportFragment"
+        android:label="Generate Report"
+        tools:layout="@layout/fragment_generate_report">
+        <argument
+            android:name="truck_number"
+            app:argType="string" />
+        <argument
+            android:name="start_date"
+            app:argType="string" />
+        <argument
+            android:name="end_date"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/generateStatementFragment"
+        android:name="com.gigaweb.mytrucks.fragments.GenerateStatementFragment"
+        android:label="Generate Statement" />
+    <fragment
+        android:id="@+id/addExpenseFragment"
+        android:name="com.gigaweb.mytrucks.fragments.AddExpenseFragment"
+        android:label="Add Expense"
+        tools:layout="@layout/fragment_add_expense" >
+        <action
+            android:id="@+id/action_addExpenseFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addIncomeFragment"
+        android:name="com.gigaweb.mytrucks.fragments.AddIncomeFragment"
+        android:label="Add Income"
+        tools:layout="@layout/fragment_add_income" >
+        <action
+            android:id="@+id/action_addIncomeFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/truckTransactionsFragment"
+        android:name="com.gigaweb.mytrucks.fragments.TruckTransactionsFragment"
+        android:label="fragment_truck_transactions"
+        tools:layout="@layout/fragment_truck_transactions" />
+</navigation>
