@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:app="http://schemas.android.com/apk/res-auto"
-             android:id="@+id/vehicles_nav_graph">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/vehiclesFragment">
 
+    <fragment
+        android:id="@+id/vehiclesFragment"
+        android:name="com.gigaweb.mytrucks.fragments.VehiclesFragment"
+        android:label="My Trucks"
+        tools:layout="@layout/fragment_vehicles">
+        <action
+            android:id="@+id/action_vehiclesFragment_to_vehicleDetailsFragment"
+            app:destination="@id/vehicleDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/vehicleDetailsFragment"
+        android:name="com.gigaweb.mytrucks.fragments.VehicleDetailsFragment"
+        android:label="{title}"
+        tools:layout="@layout/fragment_vehicle_details">
+        <argument
+            android:name="title"
+            app:argType="string" />
+    </fragment>
 </navigation>

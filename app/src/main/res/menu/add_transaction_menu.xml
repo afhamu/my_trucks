@@ -1,4 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-  
+
+    <item
+        android:id="@+id/add_income"
+        android:icon="@drawable/upward_arrow_24px"
+        android:title="Add Income" />
+
+    <item
+        android:id="@+id/add_expense"
+        android:icon="@drawable/below_24px"
+        android:title="Add Expense" />
+
+    <item
+        android:icon="@drawable/add_24px"
+        android:title="Add Truck" />
+
+    <item
+        android:id="@+id/generate_transaction"
+        android:icon="@drawable/check_24px"
+        android:title="Generate Transactions" />
+
+    <item
+        android:id="@+id/generate_report"
+        android:icon="@drawable/cost_24px"
+        android:title="Generate Report" />
 </menu>

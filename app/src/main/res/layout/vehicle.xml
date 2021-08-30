@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="16dp"
@@ -18,7 +17,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <TextView
-            android:id="@+id/textView_month_name"
+            android:id="@+id/textView_trip_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -30,11 +29,19 @@
 
         <TextView
             android:id="@+id/position_circle"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/circle_enroute"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_enroute"
+            android:gravity="center"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:paddingTop="6dp"
+            android:paddingBottom="6dp"
+            android:text="Moving"
+            android:textColor="@color/white"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -43,23 +50,22 @@
             android:layout_width="match_parent"
             android:layout_height="3dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="16dp"
             android:background="#E0E0E0"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView_month_name" />
+            app:layout_constraintTop_toBottomOf="@+id/textView_trip_number" />
 
         <ImageView
-            android:id="@+id/imageView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:src="@drawable/ic_arrow_forward"
-            app:layout_constraintBottom_toBottomOf="@+id/textView_month_name"
+            app:layout_constraintBottom_toBottomOf="@+id/textView_trip_number"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textView_month_name" />
+            app:layout_constraintTop_toTopOf="@+id/textView_trip_number" />
 
         <ImageView
             android:id="@+id/imageView_driver"
@@ -71,7 +77,7 @@
             app:layout_constraintTop_toBottomOf="@+id/linearLayout15" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/label_driver"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -85,8 +91,8 @@
             android:layout_height="wrap_content"
             android:text="Driver Name"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/textView"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintStart_toStartOf="@+id/label_driver"
+            app:layout_constraintTop_toBottomOf="@+id/label_driver" />
 
         <ImageView
             android:id="@+id/img_location"
@@ -98,7 +104,7 @@
             app:layout_constraintTop_toBottomOf="@+id/imageView_driver" />
 
         <TextView
-            android:id="@+id/textView10"
+            android:id="@+id/label_location"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -107,15 +113,15 @@
             app:layout_constraintTop_toTopOf="@+id/img_location" />
 
         <TextView
-            android:id="@+id/textView11"
+            android:id="@+id/textView_location"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:text="Lagos"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/textView10"
-            app:layout_constraintTop_toBottomOf="@+id/textView10" />
+            app:layout_constraintStart_toStartOf="@+id/label_location"
+            app:layout_constraintTop_toBottomOf="@+id/label_location" />
 
         <ImageView
             android:id="@+id/imageView_call"
@@ -124,8 +130,8 @@
             android:layout_marginEnd="24dp"
             app:layout_constraintBottom_toBottomOf="@+id/textView_driver_name"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textView"
-            app:srcCompat="@drawable/ic_phone" />
+            app:layout_constraintTop_toTopOf="@+id/label_driver"
+            android:src="@drawable/ic_phone" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

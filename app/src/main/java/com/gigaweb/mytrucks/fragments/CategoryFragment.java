@@ -2,59 +2,34 @@ package com.gigaweb.mytrucks.fragments;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 
 import com.gigaweb.mytrucks.R;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link CategoryFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.lang.reflect.Field;
+
+
 public class CategoryFragment extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public CategoryFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment CategoryFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static CategoryFragment newInstance(String param1, String param2) {
-        CategoryFragment fragment = new CategoryFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+    private BottomNavigationView bottomNavigationView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+        getActivity().getSupportFragmentManager().beginTransaction()
+                .setReorderingAllowed(true)
+                .add(R.id.category_fragment_container_view, CategoryIncomeFragment.class, null)
+                .commit();
+
     }
 
     @Override
@@ -62,5 +37,71 @@ public class CategoryFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_category, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        bottomNavigationView = view.findViewById(R.id.category_top_bottom_nav);
+        adjustGravity(bottomNavigationView);
+        adjustWidth(bottomNavigationView);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.income:
+                        getActivity().getSupportFragmentManager().beginTransaction()
+                                .setReorderingAllowed(true)
+                                .replace(R.id.category_fragment_container_view, CategoryIncomeFragment.class, null)
+                                .commit();
+                        return true;
+                    case R.id.expense:
+                        getActivity().getSupportFragmentManager().beginTransaction()
+                                .setReorderingAllowed(true)
+                                .replace(R.id.category_fragment_container_view, CategoryExpenseFragment.class, null)
+                                .commit();
+                        return true;
+
+                }
+                return false;
+            }
+        });
+    }
+
+    private static void adjustGravity(View v) {
+        if (v.getId() == com.google.android.material.R.id.navigation_bar_item_small_label_view) {
+            ViewGroup parent = (ViewGroup) v.getParent();
+            parent.setPadding(0, 0, 0, 0);
+
+            FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) parent.getLayoutParams();
+            params.gravity = Gravity.CENTER;
+            parent.setLayoutParams(params);
+        }
+
+        if (v instanceof ViewGroup) {
+            ViewGroup vg = (ViewGroup) v;
+
+            for (int i = 0; i < vg.getChildCount(); i++) {
+                adjustGravity(vg.getChildAt(i));
+            }
+        }
+    }
+
+    private static void adjustWidth(BottomNavigationView nav) {
+        try {
+            Field menuViewField = nav.getClass().getDeclaredField("mMenuView");
+            menuViewField.setAccessible(true);
+            Object menuView = menuViewField.get(nav);
+
+            Field itemWidth = menuView.getClass().getDeclaredField("mActiveItemMaxWidth");
+            itemWidth.setAccessible(true);
+            itemWidth.setInt(menuView, Integer.MAX_VALUE);
+        }
+        catch (NoSuchFieldException e) {
+            // TODO
+        }
+        catch (IllegalAccessException e) {
+            // TODO
+        }
     }
 }

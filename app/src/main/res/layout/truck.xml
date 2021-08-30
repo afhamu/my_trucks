@@ -40,7 +40,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textview_trukOverview" />
 
         <TextView
-            android:id="@+id/textView_month_name"
+            android:id="@+id/textView_trip_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
@@ -84,7 +84,6 @@
             app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
         <TextView
-            android:id="@+id/textview_truck_expenses"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"

@@ -4,35 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/darkslategray"
+    android:background="@color/white"
     tools:context=".SplashActivity">
 
-    <TextView
-        android:id="@+id/blackhorse"
+    <ImageView
+        android:id="@+id/imageView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="serif"
-        android:text="BlackHorse"
-        android:textColor="@color/white"
-        android:textSize="35sp"
-        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_truck" />
 
     <TextView
-        android:id="@+id/logistics"
+        android:id="@+id/textView14"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:fontFamily="serif"
-        android:text="Logistics"
-        android:textColor="@color/white"
-        android:textSize="30sp"
+        android:layout_marginBottom="32dp"
+        android:text="Marine Logistics"
+        android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/blackhorse"
-        app:layout_constraintStart_toStartOf="@+id/blackhorse"
-        app:layout_constraintTop_toBottomOf="@+id/blackhorse" />
-
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

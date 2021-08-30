@@ -1,6 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:app="http://schemas.android.com/apk/res-auto"
-             android:id="@+id/admin_nav_graph">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/adminDashboardFragment">
+
+    <fragment
+        android:id="@+id/adminDashboardFragment"
+        android:name="com.gigaweb.mytrucks.fragments.AdminDashboardFragment"
+        android:label="fragment_admin_dashboard"
+        tools:layout="@layout/fragment_admin_dashboard" >
+        <action
+            android:id="@+id/action_adminDashboardFragment_to_tripsFragment"
+            app:destination="@id/tripsFragment" />
+        <action
+            android:id="@+id/action_adminDashboardFragment_to_vehiclesFragment"
+            app:destination="@id/vehiclesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addExpenseFragment"
+        android:name="com.gigaweb.mytrucks.fragments.AddExpenseFragment"
+        android:label="Add Expense"
+        tools:layout="@layout/fragment_add_expense" >
+        <action
+            android:id="@+id/action_addExpenseFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addIncomeFragment"
+        android:name="com.gigaweb.mytrucks.fragments.AddIncomeFragment"
+        android:label="Add Income"
+        tools:layout="@layout/fragment_add_income" >
+        <action
+            android:id="@+id/action_addIncomeFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/vehiclesFragment"
+        android:name="com.gigaweb.mytrucks.fragments.VehiclesFragment"
+        android:label="My Trucks"
+        tools:layout="@layout/fragment_vehicles">
+        <action
+            android:id="@+id/action_vehiclesFragment_to_vehicleDetailsFragment"
+            app:destination="@id/vehicleDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tripsFragment"
+        android:name="com.gigaweb.mytrucks.fragments.TripsFragment"
+        android:label="fragment_trips"
+        tools:layout="@layout/fragment_trips" >
+        <action
+            android:id="@+id/action_tripsFragment_to_tripDetailsFragment"
+            app:destination="@id/tripDetailsFragment" />
+    </fragment>
 
 </navigation>

@@ -9,8 +9,10 @@ public class Truck {
     public String driverPhone;
     public String totalExpenses;
     public String totalIncome;
+    public String city;
+    public String location;
 
-    public Truck(String truckNumber, String make, String driver, String position, String driverPhone, String totalExpenses, String totalIncome) {
+    public Truck(String truckNumber, String make, String driver, String position, String driverPhone, String totalExpenses, String totalIncome, String city) {
         this.truckNumber = truckNumber;
         this.make = make;
         this.driver = driver;
@@ -18,6 +20,7 @@ public class Truck {
         this.driverPhone = driverPhone;
         this.totalExpenses = totalExpenses;
         this.totalIncome = totalIncome;
+        this.city = city;
     }
 
     public String getTruckNumber() {
@@ -46,5 +49,13 @@ public class Truck {
 
     public String getTotalIncome() {
         return totalIncome;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public String getLocation() {
+        return location;
     }
 }

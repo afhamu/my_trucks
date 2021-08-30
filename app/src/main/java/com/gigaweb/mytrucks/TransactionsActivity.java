@@ -1,45 +1,94 @@
 package com.gigaweb.mytrucks;
 
+import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import androidx.viewpager.widget.ViewPager;
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.widget.Toolbar;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.NavigationUI;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.view.Menu;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.MenuItem;
-import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Toast;
 
-import com.gigaweb.mytrucks.ui.main.SectionsPagerAdapter;
 import com.gigaweb.mytrucks.databinding.ActivityTransactionsBinding;
 
 public class TransactionsActivity extends AppCompatActivity {
 
-    private ActivityTransactionsBinding binding;
+    private BottomNavigationView bottomNavigationView;
+    private NavController navController;
+    private boolean doubleBackToExitPressedOnce = false;
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_transactions);
 
-        binding = ActivityTransactionsBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+        navController = Navigation.findNavController(this, R.id.transactions_nav_host);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.custom_toolbar);
+        setSupportActionBar(toolbar);
+        NavigationUI.setupWithNavController(toolbar,navController);
 
-        SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
-        ViewPager viewPager = binding.viewPager;
-        viewPager.setAdapter(sectionsPagerAdapter);
-        TabLayout tabs = binding.tabs;
-        tabs.setupWithViewPager(viewPager);
-        FloatingActionButton fab = binding.fab;
+        Window window = this.getWindow();
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
 
-        fab.setOnClickListener(new View.OnClickListener() {
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.setStatusBarColor(Color.parseColor("#0050e4"));
+
+        bottomNavigationView = findViewById(R.id.bottom_nav);
+        bottomNavigationView.setSelectedItemId(R.id.transactions);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.transactions:
+                        return true;
+                    case R.id.vehicles:
+                        startActivity(new Intent(TransactionsActivity.this, VechiclesActivity.class));
+                        overridePendingTransition(0,0);
+                        finish();
+                        return true;
+                    case R.id.menu_home:
+                        startActivity(new Intent(TransactionsActivity.this, MainActivity.class));
+                        overridePendingTransition(0,0);
+                        finish();
+                        return true;
+                }
+
+                return false;
             }
         });
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            finish();
+            this.finishAffinity();
+        }
+
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, "Click again to exit", Toast.LENGTH_SHORT).show();
+
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce=false;
+            }
+        }, 2000);
     }
 }

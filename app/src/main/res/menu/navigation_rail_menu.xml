@@ -1,4 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
+
+    <item
+        android:icon="@drawable/trip"
+        android:title="Trips" />
+
+    <item
+        android:icon="@drawable/outline_gas"
+        android:title="Fuel Log" />
+
+    <item
+        android:icon="@drawable/outline_issues"
+        android:title="Issues" />
+
+    <item
+        android:icon="@drawable/service_history"
+        android:title="Service History" />
+
+    <item
+        android:icon="@drawable/outline_service_reminder"
+        android:title="Service Reminders" />
+
+    <item
+        android:icon="@drawable/renewal_reminders"
+        android:title="Renewal Reminders" />
+    <item
+        android:icon="@drawable/photo_library"
+        android:title="Photos"/>
 </menu>

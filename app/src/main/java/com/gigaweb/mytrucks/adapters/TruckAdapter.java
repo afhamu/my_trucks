@@ -65,7 +65,7 @@ public class TruckAdapter extends RecyclerView.Adapter<TruckAdapter.TruckViewHol
 
         public TruckViewHolder(@NonNull View itemView) {
             super(itemView);
-            textView_truckNumber = itemView.findViewById(R.id.textView_month_name);
+            textView_truckNumber = itemView.findViewById(R.id.textView_trip_number);
             textView_truck_income = itemView.findViewById(R.id.textview_truck_income_value);
             textView_truck_expenses = itemView.findViewById(R.id.textview_truck_expenses_value);
             textView_saved = itemView.findViewById(R.id.textview_saved);

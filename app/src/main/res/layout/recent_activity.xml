@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
+    android:layout_height="70dp"
     android:layout_marginStart="8dp"
     android:layout_marginEnd="8dp"
     android:theme="@style/Theme.AppCompat.Light">
@@ -17,75 +17,56 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <TextView
-            android:id="@+id/textview_truck_income"
+            android:id="@+id/textview_category"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:text="Income"
-            android:textSize="16sp"
+            android:layout_marginTop="4dp"
+            android:text="Category"
+            android:textSize="22sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textview_truck_expenses"
+            android:id="@+id/textview_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Expenses"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="@+id/textview_truck_income"
-            app:layout_constraintTop_toBottomOf="@+id/textview_truck_income" />
-
-        <TextView
-            android:id="@+id/textview_truck_income_value"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="32dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="8dp"
             android:text=""
-            android:textColor="@color/darkslategray"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="@+id/textview_truck_income"
-            app:layout_constraintEnd_toStartOf="@+id/textView6"
-            app:layout_constraintStart_toEndOf="@+id/textview_truck_income"
-            app:layout_constraintTop_toTopOf="@+id/textview_truck_income" />
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/textview_category"
+            app:layout_constraintTop_toBottomOf="@+id/textview_category" />
 
         <TextView
-            android:id="@+id/textview_truck_expenses_value"
+            android:id="@+id/textview_amount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
             android:text=""
-            android:textColor="@color/red"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toStartOf="@+id/textview_saved"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/textview_truck_income_value"
-            app:layout_constraintTop_toBottomOf="@+id/textview_truck_income_value" />
+            android:textSize="20sp"
+            app:layout_constraintEnd_toStartOf="@+id/imageView_expense_income"
+            app:layout_constraintTop_toTopOf="@+id/textview_category" />
 
-        <TextView
-            android:id="@+id/textView6"
+        <ImageView
+            android:id="@+id/imageView_expense_income"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="48dp"
-            android:text="Saved"
-            android:textSize="16sp"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/up_24px"
+            app:layout_constraintBottom_toBottomOf="@+id/textview_amount"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textview_truck_income_value" />
+            app:layout_constraintTop_toTopOf="@+id/textview_amount" />
 
-        <TextView
-            android:id="@+id/textview_saved"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text=""
-            android:textColor="@color/green"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="@+id/textView6"
-            app:layout_constraintStart_toStartOf="@+id/textView6"
-            app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="8dp"
+            android:background="@android:color/darker_gray"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

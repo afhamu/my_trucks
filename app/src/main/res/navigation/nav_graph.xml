@@ -2,7 +2,6 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph"
     app:startDestination="@id/mainFragment">
 
     <fragment
@@ -25,6 +24,9 @@
         <action
             android:id="@+id/action_mainFragment_to_truckTransactionsFragment"
             app:destination="@id/truckTransactionsFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_tripsFragment"
+            app:destination="@id/tripsFragment" />
     </fragment>
     <fragment
         android:id="@+id/generateReportFragment"
@@ -68,4 +70,18 @@
         android:name="com.gigaweb.mytrucks.fragments.TruckTransactionsFragment"
         android:label="fragment_truck_transactions"
         tools:layout="@layout/fragment_truck_transactions" />
+    <fragment
+        android:id="@+id/tripsFragment"
+        android:name="com.gigaweb.mytrucks.fragments.TripsFragment"
+        android:label="fragment_trips"
+        tools:layout="@layout/fragment_trips" >
+        <action
+            android:id="@+id/action_tripsFragment_to_tripDetailsFragment"
+            app:destination="@id/tripDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tripDetailsFragment"
+        android:name="com.gigaweb.mytrucks.fragments.TripDetailsFragment"
+        android:label="fragment_trip_details"
+        tools:layout="@layout/fragment_trip_details" />
 </navigation>
